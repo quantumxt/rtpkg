@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>rtpkg</name>
+  <version>0.1.0</version>
+  <description>ROS2 Topic Example</description>
+  <maintainer email="1487quantum@users.noreply.github.com">Photon</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>cpp_pubsub</exec_depend>
+  <exec_depend>py_pubsub</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+  
+</package>
