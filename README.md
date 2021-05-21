@@ -24,6 +24,17 @@ $ colcon test --packages-select rtpkg cpp_pubsub py_pubsub
 
 > If there's error during the build, more details on the test could be viewed via `$ colcon test-result --verbose`.
 
+### Script
+
+Alternatively, a bash script is available to run the compilation & testing of the packages:
+
+```bash
+$ sudo chmod +x buildpkg.sh
+$ ./buildpkg					#Alternatively, -v flag could be used to export the verbose output of the test result
+```
+
+
+
 ## Usage
 
 There are 3 available launch files that could be used:
