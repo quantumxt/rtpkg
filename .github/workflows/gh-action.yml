@@ -27,6 +27,8 @@ jobs:
       - uses: 'ros-industrial/industrial_ci@master'
       #- uses: 'Briancbn/industrial_ci@pr-coverage-rebased'    # For code coverage upload service, use this branch for now. Else, use the main one above.
         env: ${{ matrix.env }}
+        with:
+          BEFORE_INSTALL_TARGET_DEPENDENCIES: 'git clone https://github.com/1487quantum/rtpkg.git -b feature-maxmin && cd rtpkg && colcon build --packages-select rtpkg_msg'
 
       # Upload report for codecov, not required for coveralls
       #- name: Codecov report upload
