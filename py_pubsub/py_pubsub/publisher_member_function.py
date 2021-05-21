@@ -29,10 +29,11 @@ class MinimalPublisher(Node):
 
     def timer_callback(self):
         msg = String()
-        msg.data = ' Count: %d %c' % (self.i, '|' if self.i%2==1 else '-')
+        msg.data = ' Count: %d %c' % (self.i, '|' if self.i % 2 == 1 else '-')
         self.publisher_.publish(msg)
         self.get_logger().info('Sending -> "%s"' % msg.data)
         self.i += 1
+
 
 def main(args=None):
     rclpy.init(args=args)

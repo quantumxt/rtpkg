@@ -2,7 +2,7 @@
 
 A ROS2 example package that contains the publisher and subscriber example of both C++ & Python.
 
-## Usage
+## Setup
 
 Git clone the repository into the workspace:
 
@@ -10,13 +10,24 @@ Git clone the repository into the workspace:
 $ git clone https://github.com/1487quantum/rtpkg.git
 ```
 
-After that, compile the package with `colcon build`:
+Compile the package with `colcon build`:
 
 ```bash
 $ colcon build --select-package rtpkg cpp_pubsub py_pubsub
 ```
 
+After that, run `colcon test` to test the package:
+
+```bash
+$ colcon test --packages-select rtpkg cpp_pubsub py_pubsub
+```
+
+> If there's error during the build, more details on the test could be viewed via `$ colcon test-result --verbose`.
+
+## Usage
+
 There are 3 available launch files that could be used:
+
 - `cpp_topic.launch.py`: Launches both the publisher & subscriber nodes written in C++.
 - `py_topic.launch.py`: Launches both the publisher & subscriber nodes written in Python.
 - `alltop.launch.py`: Launches both the `cpp_topic.launch.py` & `py_topic.launch.py` launch file.
