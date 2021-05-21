@@ -20,6 +20,9 @@
 #include "std_msgs/msg/string.hpp"
 #include "std_msgs/msg/int16.hpp"
 
+#include "cpp_pubsub/helper.hpp"
+#include "rtpkg_msg/msg/rndnum.hpp"
+
 using namespace std::chrono_literals;        // For timer
 
 class SubscriberCpp : public rclcpp::Node
@@ -35,7 +38,7 @@ public:
       "topic_py", 10, std::bind(&SubscriberCpp::topic_py_callback, this, std::placeholders::_1));
 
     // Publisher(s)
-    publisher_ = this->create_publisher<std_msgs::msg::Int16>("rnd_num", 10);
+    publisher_ = this->create_publisher<rtpkg_msg::msg::Rndnum>("rnd_num", 10);
     timer_ = this->create_wall_timer(500ms, std::bind(&SubscriberCpp::rndno_callback, this));
   }
 
@@ -43,9 +46,11 @@ private:
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscriptionCPP_;
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscriptionPY_;
 
-  rclcpp::Publisher<std_msgs::msg::Int16>::SharedPtr publisher_;
+  rclcpp::Publisher<rtpkg_msg::msg::Rndnum>::SharedPtr publisher_;
 
   rclcpp::TimerBase::SharedPtr timer_;
+
+  rtpkg rnum;   // Custom topic
 
   void topic_cpp_callback(const std_msgs::msg::String::SharedPtr msg) const
   {
@@ -59,13 +64,10 @@ private:
 
   void rndno_callback()
   {
-    std_msgs::msg::Int16 rndnum = std_msgs::msg::Int16();
-    // Generate random number: https://stackoverflow.com/questions/19665818/generate-random-numbers-using-c11-random-library
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_real_distribution<double> dist(1, 10000);
-    rndnum.data = static_cast<int>(dist(mt));
-
+    rtpkg_msg::msg::Rndnum rndnum = rtpkg_msg::msg::Rndnum();
+    rndnum.data = rnum.getRand(1, 10000);
+    rndnum.data_min = rnum.getMin();
+    rndnum.data_max = rnum.getMax();
     RCLCPP_INFO(this->get_logger(), "RAND NUM: '%i'", rndnum.data);
     publisher_->publish(rndnum);
   }
