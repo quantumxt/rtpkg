@@ -13,7 +13,7 @@ $ git clone https://github.com/1487quantum/rtpkg.git
 Compile the package with `colcon build`:
 
 ```bash
-$ colcon build --select-package rtpkg cpp_pubsub py_pubsub
+$ colcon build --packages-select rtpkg cpp_pubsub py_pubsub
 ```
 
 After that, run `colcon test` to test the package:

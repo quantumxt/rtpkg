@@ -14,6 +14,7 @@
 
 #include <chrono>
 #include <memory>
+#include <random>
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -59,7 +60,12 @@ private:
   void rndno_callback()
   {
     std_msgs::msg::Int16 rndnum = std_msgs::msg::Int16();
-    rndnum.data = rand_r() % 10000;
+    // Generate random number: https://stackoverflow.com/questions/19665818/generate-random-numbers-using-c11-random-library
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_real_distribution<double> dist(1, 10000);
+    rndnum.data = static_cast<int>(dist(mt));
+
     RCLCPP_INFO(this->get_logger(), "RAND NUM: '%i'", rndnum.data);
     publisher_->publish(rndnum);
   }
