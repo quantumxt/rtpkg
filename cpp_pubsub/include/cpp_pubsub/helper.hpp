@@ -23,6 +23,7 @@ public:
   rtpkg();
   ~rtpkg();
   int getRand(int minD, int maxD);
+  bool checkPrime(int n);
   int getMin();
   int getMax();
 

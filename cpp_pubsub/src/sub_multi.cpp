@@ -65,9 +65,11 @@ private:
   void rndno_callback()
   {
     rtpkg_msg::msg::Rndnum rndnum = rtpkg_msg::msg::Rndnum();
-    rndnum.data = rnum.getRand(1, 10000);
+    int n{rnum.getRand(1, 10000)};
+    rndnum.data = n;
     rndnum.data_min = rnum.getMin();
     rndnum.data_max = rnum.getMax();
+    rndnum.is_prime = rnum.checkPrime(n);
     RCLCPP_INFO(this->get_logger(), "RAND NUM: '%i'", rndnum.data);
     publisher_->publish(rndnum);
   }
