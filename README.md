@@ -1,6 +1,8 @@
 # rtpkg
 
-A ROS2 example package that contains the publisher and subscriber example of both C++ & Python.
+[![Industrial-CI](https://img.shields.io/github/checks-status/1487quantum/rtpkg/main?logo=github&style=flat-square)](https://github.com/1487quantum/rtpkg/actions/workflows/gh-action.yml)
+
+A ROS2 example package that contains the publisher and subscriber example of both C++ & Python, with the use of custom message.
 
 ## Setup
 
@@ -30,7 +32,7 @@ Alternatively, a bash script is available to run the compilation & testing of th
 
 ```bash
 $ sudo chmod +x buildpkg.sh
-$ ./buildpkg					#Alternatively, -v flag could be used to export the verbose output of the test result
+$ ./buildpkg  #Alternatively, -v flag could be used to export the verbose output of the test result
 ```
 
 
@@ -54,3 +56,12 @@ To launch the launch file, use the `ros2 launch [packageName] [launchFile]` comm
 ```bash
 $ ros2 launch rtpkg alltop.launch.py
 ```
+
+
+
+## Packages
+
+- `cpp_pubsub`: C++ publisher/subscriber example. (Subscriber node also publishes random number with `rtpkg_msg`.)
+- `py_pubsub`: Python publisher/subscriber example.
+- `rtpkg`: Contains the launch file to launch both the C++ and Python publisher/subscriber example. 
+- `rtpkg_msg`: Custom ROS2 message for the `rtpkg` package, used for random number topic publication/subscription.
