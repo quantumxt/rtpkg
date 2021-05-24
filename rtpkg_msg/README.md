@@ -21,7 +21,7 @@ find_package(rtpkg_msg REQUIRED)
 
 
 
-## Topic Structure
+## Message Structure
 
 - `data`: Value of the randomly generated number. [int16]
 - `data_min`: Minimum value number generated within the current session. [int16]
