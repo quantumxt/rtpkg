@@ -13,7 +13,8 @@ find_package(ament_cmake REQUIRED)
  
 set(LIB_NAME rtpkg_helper)
 
-add_library(${LIB_NAME} src/helper.cpp)
+add_library(${LIB_NAME} SHARED
+  src/helper.cpp)
  
 # Gen launch files.
 install(DIRECTORY launch
@@ -34,6 +35,10 @@ install(
 )
 
 if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)    # For gtest c++ testing
+  ament_add_gtest(${PROJECT_NAME}_utest test/utest.cpp)
+  target_link_libraries(${PROJECT_NAME}_utest ${LIB_NAME})
+  
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
   # uncomment the line when a copyright and license is not present in all source files
