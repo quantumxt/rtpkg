@@ -16,7 +16,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
-# Find pkg locally
+# rtpkg_msg custom msg
 find_package(rtpkg_msg REQUIRED)
 
 # Pub
