@@ -70,6 +70,7 @@ private:
     rndnum.data_min = rnum.getMin();
     rndnum.data_max = rnum.getMax();
     rndnum.is_prime = rnum.checkPrime(n);
+    rndnum.prime_ratio = rnum.getPrimeRatio();
     RCLCPP_INFO(this->get_logger(), "RAND NUM: '%i'", rndnum.data);
     publisher_->publish(rndnum);
   }

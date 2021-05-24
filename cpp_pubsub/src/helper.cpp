@@ -31,6 +31,7 @@ int rtpkg::getRand(int minD, int maxD)
   if (tmpNum < numMin) {
     setMin(tmpNum);
   }
+  ++totalCount;
   return tmpNum;
 }
 
@@ -47,7 +48,24 @@ bool rtpkg::checkPrime(int n)
       }
     }
   }
+  if (isPrime) {
+    ++totalPrime;
+  }
   return isPrime;
+}
+
+float rtpkg::getPrimeRatio()
+{
+  if (totalCount == 0) {
+    return 0;
+  } else {
+    return totalPrime / static_cast<float>(getCount());
+  }
+}
+
+int rtpkg::getCount()
+{
+  return totalCount;
 }
 
 int rtpkg::getMin()

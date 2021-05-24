@@ -24,12 +24,16 @@ public:
   ~rtpkg();
   int getRand(int minD, int maxD);
   bool checkPrime(int n);
+  float getPrimeRatio();
+  int getCount();
   int getMin();
   int getMax();
 
 private:
   int numMin{10000};
   int numMax{-1000};
+  int totalCount{0};
+  int totalPrime{0};
   void setMin(int & mn);
   void setMax(int & mx);
 };
