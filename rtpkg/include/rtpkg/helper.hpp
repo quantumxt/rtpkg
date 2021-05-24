@@ -22,11 +22,42 @@ class rtpkg
 public:
   rtpkg();
   ~rtpkg();
+  
+  /**
+  * @brief Function to generate a random number.
+  * @param minD - Minimum number value to be generated.
+  * @param maxD - Maximum number value to be generated.
+  * @return The generated random number.
+  */
   int getRand(int minD, int maxD);
+  
+  /**
+  * @brief Function to check whether the input number is a prime number.
+  * @param n - Input number to be check.
+  * @return True if the number supplied is a prime number.
+  */
   bool checkPrime(int n);
+  
+  /**
+  * @brief Function to get the ratio of the number of prime number generated over
+  * the total number of random number generated. 
+  * @return Float value of the prime number ratio.
+  */
   float getPrimeRatio();
+  
+  /**
+  * @brief Function to get the total number of random number generated. 
+  */
   int getCount();
+  
+  /**
+  * @brief Function to get the smallest number generated. 
+  */
   int getMin();
+  
+  /**
+  * @brief Function to get the largest number generated. 
+  */
   int getMax();
 
 private:
