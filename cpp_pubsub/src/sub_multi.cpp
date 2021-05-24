@@ -20,7 +20,7 @@
 #include "std_msgs/msg/string.hpp"
 #include "std_msgs/msg/int16.hpp"
 
-#include "cpp_pubsub/helper.hpp"
+#include "rtpkg/helper.hpp"
 #include "rtpkg_msg/msg/rndnum.hpp"
 
 using namespace std::chrono_literals;        // For timer
