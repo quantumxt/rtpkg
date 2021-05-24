@@ -21,8 +21,10 @@ find_package(rtpkg_msg REQUIRED)
 
 
 
-## Topic Structure
+## Message Structure
 
-- `data`: Value of the randomly generated number.
-- `data_min`: Minimum value number generated within the current session.
-- `data_max`: Maximum value number generated within the current session.
+- `data`: Value of the randomly generated number. [int16]
+- `data_min`: Minimum value number generated within the current session. [int16]
+- `data_max`: Maximum value number generated within the current session. [int16]
+- `is_prime`:  Determine whether the current number is a prime number or not. [bool]
+- `prime_ratio`: Ratio of the total number of prime number compared to the total random number generated within the current session. [float32]

@@ -2,7 +2,9 @@
 
 [![Industrial-CI](https://img.shields.io/github/workflow/status/1487quantum/rtpkg/Industrial-CI?logo=github&style=flat-square)](https://github.com/1487quantum/rtpkg/actions/workflows/gh-action.yml)
 
-A ROS2 example package that contains the publisher and subscriber example of both C++ & Python, with the use of custom message.
+A ROS2 example package that contains the publisher and subscriber example of both C++ & Python, with the use of custom message. 
+
+The C++ subscriber node also subscribes to the topic `topic_py` published by the Python publisher. Additionally, it also utilises the `rtpkg` helper class to generate random number, which is then published as `rnd_num` with the custom message structure `rtpkg_msg`.
 
 ## Setup
 
@@ -63,5 +65,5 @@ $ ros2 launch rtpkg alltop.launch.py
 
 - `cpp_pubsub`: C++ publisher/subscriber example. (Subscriber node also publishes random number with `rtpkg_msg`.)
 - `py_pubsub`: Python publisher/subscriber example.
-- `rtpkg`: Contains the launch file to launch both the C++ and Python publisher/subscriber example. 
-- `rtpkg_msg`: Custom ROS2 message for the `rtpkg` package, used for random number topic publication/subscription. More information could be found [here](rtpkg_msg/README.md).
+- `rtpkg`: Contains the `rtpkg` helper class for random number generation & the launch file to launch both the C++ and Python publisher/subscriber example simulataneously. 
+- `rtpkg_msg`: Custom ROS2 message structure for the `rtpkg` package, used for random number topic publication/subscription. More information could be found [here](rtpkg_msg/README.md).

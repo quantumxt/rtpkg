@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "cpp_pubsub/helper.hpp"
+#include "rtpkg/helper.hpp"
 
 rtpkg::rtpkg() {}
 
@@ -31,7 +31,41 @@ int rtpkg::getRand(int minD, int maxD)
   if (tmpNum < numMin) {
     setMin(tmpNum);
   }
+  ++totalCount;
   return tmpNum;
+}
+
+bool rtpkg::checkPrime(int n)
+{
+  bool isPrime{true};
+  if (n < 2) {
+    isPrime = false;
+  } else {
+    for (int i{2}; i <= n / 2; ++i) {
+      if (n % i == 0) {
+        isPrime = false;
+        break;
+      }
+    }
+  }
+  if (isPrime) {
+    ++totalPrime;
+  }
+  return isPrime;
+}
+
+float rtpkg::getPrimeRatio()
+{
+  if (totalCount == 0) {
+    return 0;
+  } else {
+    return totalPrime / static_cast<float>(getCount());
+  }
+}
+
+int rtpkg::getCount()
+{
+  return totalCount;
 }
 
 int rtpkg::getMin()

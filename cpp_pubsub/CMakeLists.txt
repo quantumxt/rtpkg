@@ -6,17 +6,13 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
 endif()
 
-
-include_directories(
-  include
-)
-
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
-# rtpkg_msg custom msg
+# Add rtpkg for helper function
+find_package(rtpkg REQUIRED)
 find_package(rtpkg_msg REQUIRED)
 
 # Pub
@@ -24,8 +20,10 @@ add_executable(pub src/pub_single.cpp)
 ament_target_dependencies(pub rclcpp std_msgs)
 
 # Sub
-add_executable(sub src/sub_multi.cpp src/helper.cpp)
-ament_target_dependencies(sub rclcpp std_msgs rtpkg_msg)
+add_executable(sub src/sub_multi.cpp)
+target_link_libraries(sub ${RTPKG_LIBRARIES})
+ament_target_dependencies(sub rclcpp std_msgs rtpkg rtpkg_msg)
+
 
 install(TARGETS
   pub
@@ -38,10 +36,6 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}/
 )
 
-install(DIRECTORY include/
-  DESTINATION include/
-)
-
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -52,7 +46,5 @@ if(BUILD_TESTING)
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
-ament_export_include_directories(include)
 
 ament_package()
