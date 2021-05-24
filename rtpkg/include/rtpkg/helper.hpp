@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef CPP_PUBSUB__HELPER_HPP_
-#define CPP_PUBSUB__HELPER_HPP_
+#ifndef RTPKG__HELPER_HPP_
+#define RTPKG__HELPER_HPP_
 
 #include <random>
 
@@ -38,4 +38,4 @@ private:
   void setMax(int & mx);
 };
 
-#endif    // CPP_PUBSUB__HELPER_HPP_
+#endif    // RTPKG__HELPER_HPP_

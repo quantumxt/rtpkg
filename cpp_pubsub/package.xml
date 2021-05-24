@@ -10,6 +10,7 @@
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
   
+  <build_depend>rtpkg</build_depend>
   <build_depend>rtpkg_msg</build_depend>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
