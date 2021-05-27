@@ -41,10 +41,11 @@ if(BUILD_TESTING)
   target_link_libraries(${PROJECT_NAME}_utest ${LIB_NAME})
 
   # Catch2 C++ unit test
+  set(Catch2_DIR /home/runner/work/rtpkg/rtpkg/Catch2/tmp/lib/cmake/Catch2/)  # Only for github action, comment out after cloning repo
   find_package(Catch2 REQUIRED)
   find_package(ament_cmake_catch2 REQUIRED)
   ament_add_catch2(${PROJECT_NAME}_catch2 test/main_catch.cpp)
-  target_link_libraries(${PROJECT_NAME}_catch2 ${LIB_NAME})
+  target_link_libraries(${PROJECT_NAME}_catch2 ${LIB_NAME} Catch2::Catch2)
 
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
