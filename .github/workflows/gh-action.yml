@@ -12,6 +12,7 @@ jobs:
            - {ROS_DISTRO: foxy, ROS_REPO: main}
     env:
       CCACHE_DIR: /github/home/.ccache                          # Directory for ccache (and how we enable ccache in industrial_ci)
+      UPSTREAM_WORKSPACE: 'req.repos'                           # Import ament_catch2 plugin
       #CODE_COVERAGE: coveralls.io                               # Select either codecov.io or coveralls.io, else comment it out
       #COVERALLS_REPO_TOKEN:  ${{ secrets.COVERALLS_TOKEN }}     # Required only for coveralls, set repo secret in settings
 
@@ -23,6 +24,8 @@ jobs:
         with:
           path: ${{ env.CCACHE_DIR }}
           key: ccache-${{ matrix.env.ROS_DISTRO }}-${{ matrix.env.ROS_REPO }}
+      - name: Setup Catch2                                        # Setup Catch2 in /home/runner/work/rtpkg/rtpkg/Catch2/tmp/
+        run: './scripts/setup_catch2.sh'
       # Run industrial_ci
       - uses: 'ros-industrial/industrial_ci@master'
       #- uses: 'Briancbn/industrial_ci@pr-coverage-rebased'    # For code coverage upload service, use this branch for now. Else, use the main one above.
