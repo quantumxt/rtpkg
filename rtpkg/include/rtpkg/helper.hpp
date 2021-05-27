@@ -40,23 +40,23 @@ public:
 
   /**
   * @brief Function to get the ratio of the number of prime number generated over
-  * the total number of random number generated. 
+  * the total number of random number generated.
   * @return Float value of the prime number ratio.
   */
   float getPrimeRatio();
 
   /**
-  * @brief Function to get the total number of random number generated. 
+  * @brief Function to get the total number of random number generated.
   */
   int getCount();
 
   /**
-  * @brief Function to get the smallest number generated. 
+  * @brief Function to get the smallest number generated.
   */
   int getMin();
 
   /**
-  * @brief Function to get the largest number generated. 
+  * @brief Function to get the largest number generated.
   */
   int getMax();
 
