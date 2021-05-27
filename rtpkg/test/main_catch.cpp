@@ -12,47 +12,38 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <gtest/gtest.h>
+#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
+#include <catch2/catch.hpp>
+
 #include "rtpkg/helper.hpp"
 
 rtpkg test_rtpkg;   // Create rtpkg object
 
-TEST(TestCheckPrime, PositiveNos)
+TEST_CASE("TestCheckPrime", "[numbers]")
 {
-  EXPECT_FALSE(test_rtpkg.checkPrime(1));
-  EXPECT_TRUE(test_rtpkg.checkPrime(7));
-  EXPECT_TRUE(test_rtpkg.checkPrime(4909));
-  EXPECT_FALSE(test_rtpkg.checkPrime(6576));
-  EXPECT_FALSE(test_rtpkg.checkPrime(8583));
-}
-
-TEST(TestCheckPrime, ZeroNegativeNos)
-{
+  REQUIRE(test_rtpkg.checkPrime(1) == 0);
+  REQUIRE(test_rtpkg.checkPrime(7) == 1);
+  REQUIRE(test_rtpkg.checkPrime(4909) == 1);
+  REQUIRE(test_rtpkg.checkPrime(6576) == 0);
+  REQUIRE(test_rtpkg.checkPrime(8583) == 0);
   for (int j{0}; j > -20000; --j) {
-    ASSERT_FALSE(test_rtpkg.checkPrime(j));
+    REQUIRE(test_rtpkg.checkPrime(j) == 0);
   }
 }
 
-TEST(TestCount, PositiveNos)
+TEST_CASE("TestCount", "[PositiveNos]")
 {
-  EXPECT_EQ(0, test_rtpkg.getCount());
+  REQUIRE(test_rtpkg.getCount() == 0);
   for (int j{0}; j < 100; ++j) {
     test_rtpkg.getRand(1, 200);
   }
-  EXPECT_EQ(100, test_rtpkg.getCount());
+  REQUIRE(test_rtpkg.getCount() == 100);
   for (int j{0}; j < 100000; ++j) {
     test_rtpkg.getRand(100, 5000);
   }
-  EXPECT_EQ(100100, test_rtpkg.getCount());
+  REQUIRE(test_rtpkg.getCount() == 100100);
   for (int j{0}; j < 100000; ++j) {
     test_rtpkg.getRand(-70, 10000);
   }
-  EXPECT_EQ(200100, test_rtpkg.getCount());
-}
-
-// Run all the tests that were declared with TEST()
-int main(int argc, char ** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+  REQUIRE(test_rtpkg.getCount() == 200100);
 }

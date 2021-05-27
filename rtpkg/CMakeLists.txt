@@ -35,9 +35,16 @@ install(
 )
 
 if(BUILD_TESTING)
-  find_package(ament_cmake_gtest REQUIRED)    # For gtest c++ testing
+  # gtest c++ unit test
+  find_package(ament_cmake_gtest REQUIRED)
   ament_add_gtest(${PROJECT_NAME}_utest test/utest.cpp)
   target_link_libraries(${PROJECT_NAME}_utest ${LIB_NAME})
+
+  # Catch2 C++ unit test
+  find_package(Catch2 REQUIRED)
+  find_package(ament_cmake_catch2 REQUIRED)
+  ament_add_catch2(${PROJECT_NAME}_catch2 test/main_catch.cpp)
+  target_link_libraries(${PROJECT_NAME}_catch2 ${LIB_NAME})
 
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -47,6 +54,7 @@ if(BUILD_TESTING)
   # uncomment the line when this package is not in a git repo
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
+
 endif()
 
 ament_export_include_directories(include)
