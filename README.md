@@ -1,21 +1,21 @@
 # rtpkg
 
-[![Industrial-CI](https://img.shields.io/github/workflow/status/1487quantum/rtpkg/Industrial-CI?logo=github&style=flat-square)](https://github.com/1487quantum/rtpkg/actions/workflows/gh-action.yml)
-[![Documentation](https://img.shields.io/github/workflow/status/1487quantum/rtpkg/Documentation?label=docs&style=flat-square
-)](https://github.com/1487quantum/rtpkg/actions/workflows/doxy.yml)
+[![Industrial-CI](https://img.shields.io/github/actions/workflow/status/quantumxt/rtpkg/gh-action.yml?logo=github&style=flat-square)](https://github.com/quantumxt/rtpkg/actions/workflows/gh-action.yml)
+[![Documentation](https://img.shields.io/github/actions/workflow/status/quantumxt/rtpkg/doxy.yml?logo=readthedocs&label=docs&style=flat-square
+)](https://github.com/quantumxt/rtpkg/actions/workflows/doxy.yml)
 
 A ROS2 example package that contains the publisher and subscriber example of both C++ & Python, with the use of custom message. 
 
 The C++ subscriber node also subscribes to the topic `topic_py` published by the Python publisher. Additionally, it also utilises the `rtpkg` helper class to generate random number, which is then published as `rnd_num` with the custom message structure `rtpkg_msg`.
 
-> API documentation of the `rtpkg` package is available here: https://1487quantum.github.io/rtpkg/
+> API documentation of the `rtpkg` package is available here: https://quantumxt.github.io/rtpkg/
 
 ## Setup
 
 Git clone the repository into the workspace:
 
 ```bash
-$ git clone https://github.com/1487quantum/rtpkg.git
+$ git clone https://github.com/quantumxt/rtpkg.git
 ```
 
 Compile the package with `colcon build`:
